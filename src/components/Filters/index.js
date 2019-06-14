@@ -1,10 +1,11 @@
-import React, { Fragment } from "react";
+import React from "react";
+import "./styles.scss";
 
 class Filters extends React.Component {
   render() {
     return (
-      <Fragment>
-        <label htmlFor="pokemon">Búsqueda</label>
+      <section className="search__container">
+        <label htmlFor="pokemon" className="search-label">Búsqueda</label>
         <input
           type="text"
           className="search-input"
@@ -14,7 +15,7 @@ class Filters extends React.Component {
           value={this.props.pokemon}
           onChange={this.props.onChangeInput}
         />
-      </Fragment>
+      </section>
     );
   }
 }
