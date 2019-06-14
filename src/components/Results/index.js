@@ -3,11 +3,11 @@ import Card from '../Card';
 
 class Results extends React.Component {
   render() {
-    const { data, pokemon } = this.props;
+    const { info, pokemon } = this.props;
     return (
       <ul>
-        {data.length
-          ? data
+        {info.length
+          ? info
               .filter(item => item.name.includes(pokemon))
               .map(item => {
                 return (

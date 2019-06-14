@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 
 class Card extends React.Component{
     render(){
-        const { name, id, types, sprite: {front_default} } = this.props.item;
+        const { name, id, types, sprites: {front_default} } = this.props.item;
         return (
             <Fragment>
                 <img className="image-pokemon" src={front_default} alt={name}/>
