@@ -1,12 +1,13 @@
 import React from 'react';
 import './styles.scss';
 import Filters from '../Filters';
+import Results from '../Results';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data:[],
+      data:[{name:'pikachu'}, {name:'mew'}, {name:'vulpix'}],
       pokemon:'',
     }
 
@@ -24,6 +25,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Filters pokemon={this.state.pokemon} onChangeInput={this.handleChangeInputSearch}/>
+        <Results pokemon={this.state.pokemon} data={this.state.data}/>
       </div>
     );
   }
