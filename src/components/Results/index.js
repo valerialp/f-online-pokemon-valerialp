@@ -1,4 +1,5 @@
 import React from "react";
+import Card from '../Card';
 
 class Results extends React.Component {
   render() {
@@ -10,8 +11,8 @@ class Results extends React.Component {
               .filter(item => item.name.includes(pokemon))
               .map(item => {
                 return (
-                  <li>
-                    <p>hola</p>
+                  <li className="card-pokemon" key={item.id}>
+                    <Card item={item}/>
                   </li>
                 );
               })
