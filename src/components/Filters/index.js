@@ -11,7 +11,8 @@ class Filters extends React.Component {
           name="pokemon"
           id="pokemon"
           placeholder="Pikachu"
-          onChange={() => console.log("pikachu")}
+          value={this.props.pokemon}
+          onChange={this.props.onChangeInput}
         />
       </Fragment>
     );
