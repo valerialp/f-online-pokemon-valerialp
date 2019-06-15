@@ -1,0 +1,32 @@
+.card__container-top{
+    background-color: rgb(189, 189, 189);
+}
+.image-pokemon{
+}
+.id-pokemon{
+    background-color: rgb(212, 174, 124);
+    display: inline;
+    padding: 3px;
+    position: absolute;
+    left:0;
+    top:35%;
+}
+.card__container-bottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: flex-start;
+    margin: 10px 8px;
+    text-align: left;
+}
+.name-pokemon{
+    margin:5px 0;;
+}
+.type-pokemon{
+    display: inline;
+    margin:5px;
+    padding: 0 3px;
+    border: 1px solid rgb(197, 197, 197);
+    border-radius: 20%;
+    
+}

@@ -11,7 +11,7 @@ class Filters extends React.Component {
           className="search-input"
           name="pokemon"
           id="pokemon"
-          placeholder="Pikachu"
+          placeholder="Filtrar pokemons por nombre..."
           value={this.props.pokemon}
           onChange={this.props.onChangeInput}
         />
