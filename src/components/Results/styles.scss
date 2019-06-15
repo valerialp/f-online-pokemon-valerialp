@@ -3,10 +3,20 @@
     padding: 0;
     margin: auto;
     text-align: center;
-    width: 800px;
     display: grid;
-    grid-template-columns:  200px 200px 200px 200px;
-    border: 1px solid black
+    width: 300px;
+    grid-template-columns:  150px 150px ;
+
+    @media all and (min-width:768px){
+        width: 600px;
+        grid-template-columns:  200px 200px 200px;
+    }
+
+    @media all and (min-width:1200px){
+        width: 800px;
+        grid-template-columns:  200px 200px 200px 200px;
+        border: 1px solid black
+    }
 }
 .card{
     margin: 10px;
