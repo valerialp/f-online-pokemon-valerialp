@@ -13,7 +13,7 @@ class Card extends React.Component {
       <Fragment>
         <div className="card__container-top">
           <img className="image-pokemon" src={front_default} alt={name} />
-          <p className="id-pokemon">ID/{id}</p>
+          <p className="id-pokemon">ID / {id}</p>
         </div>
         <div className="card__container-bottom">
           <h3 className="name-pokemon">{name}</h3>
