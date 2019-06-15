@@ -19,7 +19,7 @@ class Card extends React.Component {
           <h3 className="name-pokemon">{name}</h3>
           <div className="types__container">
           {types.map(item => {
-            return <p className="type-pokemon">{item.type.name}</p>;
+            return <p className="type-pokemon">{item.type.name.toUpperCase()}</p>;
           })}
           </div>
         </div>
