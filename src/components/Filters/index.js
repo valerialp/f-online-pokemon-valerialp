@@ -5,7 +5,9 @@ class Filters extends React.Component {
   render() {
     return (
       <section className="search__container">
-        <label htmlFor="pokemon" className="search-label">Búsqueda</label>
+        <label htmlFor="pokemon" className="search-label">
+          Búsqueda
+        </label>
         <input
           type="text"
           className="search-input"

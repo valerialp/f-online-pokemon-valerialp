@@ -18,9 +18,11 @@ class Card extends React.Component {
         <div className="card__container-bottom">
           <h3 className="name-pokemon">{name}</h3>
           <div className="types__container">
-          {types.map(item => {
-            return <p className="type-pokemon">{item.type.name.toUpperCase()}</p>;
-          })}
+            {types.map(item => {
+              return (
+                <p className="type-pokemon">{item.type.name.toUpperCase()}</p>
+              );
+            })}
           </div>
         </div>
       </Fragment>

@@ -54,10 +54,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="black-left"></div>
-        <div className="black-right"></div>
-        <div className="red-left"></div>
-        <div className="red-right"></div>
+        <div className="black-left" />
+        <div className="black-right" />
+        <div className="red-left" />
+        <div className="red-right" />
 
         <Filters
           pokemon={this.state.pokemon}
