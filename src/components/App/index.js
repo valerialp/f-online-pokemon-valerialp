@@ -23,14 +23,10 @@ class App extends React.Component {
     fetch("https://pokeapi.co/api/v2/pokemon/?limit=25")
       .then(response => response.json())
       .then(data => {
-        const dataIndex = data.results.map((item, index) => {
-          return { ...item, id: index + 1 };
-        });
-
         const dataInfo = [];
 
-        return dataIndex.map(item =>
-          fetch(`https://pokeapi.co/api/v2/pokemon/${item.id}`)
+        return data.results.map(item =>
+          fetch(item.url)
             .then(response => response.json())
             .then(item => {
               dataInfo.push(item);

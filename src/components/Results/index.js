@@ -9,7 +9,7 @@ class Results extends React.Component {
       <ul className="list">
         {info.length ? (
           info
-            .filter(item => item.name.includes(pokemon))
+            .filter(item => pokemon ? item.name.includes(pokemon) : true)
             .map(item => {
               const key = item.id;
               return (
