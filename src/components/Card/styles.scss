@@ -1,10 +1,12 @@
+@import "../../stylesheets/variables.scss";
+
 .card__container-top{
-    background-color: #DFDFDF;
+    background-color: $colorGrey100;
     position: relative;
 }
 .id-pokemon{
-    background-color: #D1CECA;
-    color:#856D56;
+    background-color: $colorGrey200;
+    color:$colorBronw100;
     font-size: 10px;
     font-weight: 500;
     display: inline;
@@ -29,10 +31,10 @@
 .type-pokemon{
     display: inline;
     font-size:10px;
-    color: #856D56;
+    color: $colorBronw100;
     margin:0 5px 0 0;
     padding: 1px 3px;
-    border: 1px solid #D8D0C7;
+    border: 1px solid $colorGrey150;
     border-radius: 19%;
     
 }

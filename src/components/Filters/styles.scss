@@ -1,3 +1,5 @@
+@import "../../stylesheets/variables.scss";
+
 .search-label{
     position: absolute !important;
     height: 1px;
@@ -7,10 +9,10 @@
 }
 .search-input{
     text-align: center;
-    color:#D0CFCB;
+    color:$colorWhite150;
     font-family: inherit;
     border: none;
-    box-shadow: 1px 0.5px 5px 2px rgb(192, 192, 192);
+    box-shadow: 1px 0.5px 5px 2px $colorGrey100;
     height: 38px;
     width: 200px;
 
