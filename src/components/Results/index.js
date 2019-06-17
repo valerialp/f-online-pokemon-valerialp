@@ -9,7 +9,7 @@ class Results extends React.Component {
       <ul className="list">
         {info.length ? (
           info
-            .filter(item => pokemon ? item.name.includes(pokemon) : true)
+            .filter(item => (pokemon ? item.name.includes(pokemon) : true))
             .map(item => {
               const key = item.id;
               return (
@@ -19,7 +19,14 @@ class Results extends React.Component {
               );
             })
         ) : (
-          <p>Loading...</p>
+          <div class="load-wrapp">
+            <div class="load-1">
+              <p>Loading...</p>
+              <div class="line" />
+              <div class="line" />
+              <div class="line" />
+            </div>
+          </div>
         )}
       </ul>
     );
