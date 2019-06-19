@@ -3,7 +3,8 @@ import "./styles.scss";
 import Filters from "../Filters";
 import Results from "../Results";
 import CardDetails from "../CardDetails";
-// import { getData } from "../../services/getData";
+import getData from "../../services/getData";
+import getDetail from "../../services/getDetail";
 import { Route, Switch } from "react-router-dom";
 
 class App extends React.Component {
@@ -18,33 +19,19 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // console.log(getData());
-    // // getData().then(dataInfo => {
-    // //   dataInfo.sort((a, b) => a.id - b.id);
-    // //   this.setState({ info: dataInfo });
-    // // });;
-    this.getData();
+    this.fetchList();
   }
 
-  getData() {
-    fetch("https://pokeapi.co/api/v2/pokemon/?limit=25")
-      .then(response => response.json())
-      .then(data => {
-        const dataInfo = [];
-
-        return data.results.map(item =>
-          fetch(item.url)
-            .then(response => response.json())
-            .then(item => {
-              dataInfo.push(item);
-              return dataInfo;
-            })
-            .then(dataInfo => {
-              dataInfo.sort((a, b) => a.id - b.id);
-              this.setState({ info: dataInfo });
-            })
-        );
+  fetchList() {
+    getData().then(data => {
+      const cabrona = data.results;
+      const pokemonData = cabrona.map(item => getDetail(item.url));
+      Promise.all(pokemonData).then(responses => {
+        this.setState({
+          info: responses,
+        });
       });
+    });
   }
 
   handleChangeInputSearch(e) {
@@ -74,14 +61,13 @@ class App extends React.Component {
               <Results pokemon={this.state.pokemon} info={this.state.info} />
             )}
           />
-          <Route
+          {/* <Route
             path="/pokemon/:id"
             render={routerProps => (
               <CardDetails info={this.state.info} match={routerProps.match} />
             )}
-          />
+          /> */}
         </Switch>
-        <Results pokemon={this.state.pokemon} info={this.state.info} />
       </div>
     );
   }
