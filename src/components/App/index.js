@@ -2,6 +2,8 @@ import React from "react";
 import "./styles.scss";
 import Filters from "../Filters";
 import Results from "../Results";
+import { getData } from "../../services/getData";
+import { Route, Switch } from "react-router-dom";
 
 class App extends React.Component {
   constructor(props) {
@@ -15,6 +17,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    // console.log(getData());
+    // // getData().then(dataInfo => {
+    // //   dataInfo.sort((a, b) => a.id - b.id);
+    // //   this.setState({ info: dataInfo });
+    // // });;
     this.getData();
   }
 
@@ -58,6 +65,16 @@ class App extends React.Component {
           pokemon={this.state.pokemon}
           onChangeInput={this.handleChangeInputSearch}
         />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={routerProps => (
+              <Results pokemon={this.state.pokemon} info={this.state.info} />
+            )}
+          />
+          <Route path="/pokemon/:id"  />
+        </Switch>
         <Results pokemon={this.state.pokemon} info={this.state.info} />
       </div>
     );

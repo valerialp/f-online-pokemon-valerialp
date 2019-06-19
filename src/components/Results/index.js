@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "../Card";
 import "./styles.scss";
+import { Link } from "react-router-dom";
 
 class Results extends React.Component {
   render() {
@@ -13,20 +14,15 @@ class Results extends React.Component {
             .map(item => {
               const key = item.id;
               return (
-                <li className="card" key={key}>
-                  <Card item={item} />
-                </li>
+                <Link to={`/pokemon/${key}`} key={key}>
+                  <li className="card" id={key} key={key}>
+                    <Card item={item} />
+                  </li>
+                </Link>
               );
             })
         ) : (
-          <div class="load-wrapp">
-            <div class="load-1">
-              <p>Loading...</p>
-              <div class="line" />
-              <div class="line" />
-              <div class="line" />
-            </div>
-          </div>
+          <p>Loading...</p>
         )}
       </ul>
     );
