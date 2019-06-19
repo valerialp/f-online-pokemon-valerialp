@@ -9,6 +9,7 @@ class Card extends React.Component {
       types,
       sprites: { front_default }
     } = this.props.item;
+    const {evo} =this.props;
     return (
       <Fragment>
         <div className="card__container-top">
@@ -24,6 +25,13 @@ class Card extends React.Component {
               );
             })}
           </div>
+          {evo && evo.evolves_from_species ?
+          <div>
+            <p>Evoluciona de:</p>
+            <p>{evo.evolves_from_species.name}</p>
+          </div>
+          : null
+          }
         </div>
       </Fragment>
     );

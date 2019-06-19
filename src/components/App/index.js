@@ -5,6 +5,7 @@ import Results from "../Results";
 import CardDetails from "../CardDetails";
 import getData from "../../services/getData";
 import getDetail from "../../services/getDetail";
+import getEvolution from "../../services/getEvolution";
 import { Route, Switch } from "react-router-dom";
 
 class App extends React.Component {
@@ -12,6 +13,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       info: [],
+      evolution: [],
       pokemon: ""
     };
 
@@ -24,12 +26,18 @@ class App extends React.Component {
 
   fetchList() {
     getData().then(data => {
-      const cabrona = data.results;
-      const pokemonData = cabrona.map(item => getDetail(item.url));
+      const pokemonData = data.results.map(item => getDetail(item.url));
       Promise.all(pokemonData).then(responses => {
         this.setState({
-          info: responses,
+          info: responses
         });
+        const evolution = responses.map(item => getEvolution(item.id));
+
+        Promise.all(evolution).then(evolution =>
+          this.setState({
+            evolution: evolution
+          })
+        );
       });
     });
   }
@@ -58,7 +66,11 @@ class App extends React.Component {
             exact
             path="/"
             render={routerProps => (
-              <Results pokemon={this.state.pokemon} info={this.state.info} />
+              <Results
+                pokemon={this.state.pokemon}
+                info={this.state.info}
+                evolution={this.state.evolution}
+              />
             )}
           />
           {/* <Route
