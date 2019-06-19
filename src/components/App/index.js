@@ -2,7 +2,8 @@ import React from "react";
 import "./styles.scss";
 import Filters from "../Filters";
 import Results from "../Results";
-import { getData } from "../../services/getData";
+import CardDetails from "../CardDetails";
+// import { getData } from "../../services/getData";
 import { Route, Switch } from "react-router-dom";
 
 class App extends React.Component {
@@ -73,7 +74,12 @@ class App extends React.Component {
               <Results pokemon={this.state.pokemon} info={this.state.info} />
             )}
           />
-          <Route path="/pokemon/:id"  />
+          <Route
+            path="/pokemon/:id"
+            render={routerProps => (
+              <CardDetails info={this.state.info} match={routerProps.match} />
+            )}
+          />
         </Switch>
         <Results pokemon={this.state.pokemon} info={this.state.info} />
       </div>
