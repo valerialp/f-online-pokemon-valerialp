@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "../Card";
+import Loading from "../Loading";
 import "./styles.scss";
 import { Link } from "react-router-dom";
 
@@ -24,7 +25,7 @@ class Results extends React.Component {
               );
             })
         ) : (
-          <p>Loading...</p>
+          <Loading />
         )}
       </ul>
     );
