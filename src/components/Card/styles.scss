@@ -1,7 +1,6 @@
 @import "../../stylesheets/variables.scss";
 
 .card__container-top{
-    background-color: $colorGrey100;
     position: relative;
 
     .id-pokemon{
@@ -22,9 +21,10 @@
     flex-direction: column;
     justify-content: space-around;
     align-content: flex-start;
-    margin: 10px 12px 15px 12px;
+    padding: 10px 12px 15px 12px;
     text-align: left;
     min-height: 77px;
+    background-color: $colorWhite;
 
     .name-pokemon{
         margin:5px 0;;
@@ -44,6 +44,7 @@
 
 .card__container-bottom{
     margin-top:7px;
+    background-color: $colorWhite;
     
     .evolution-pokemon{
         border-left: 3px solid $colorBronw100;
