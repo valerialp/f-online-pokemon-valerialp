@@ -73,12 +73,12 @@ class App extends React.Component {
               />
             )}
           />
-          {/* <Route
+          <Route
             path="/pokemon/:id"
             render={routerProps => (
-              <CardDetails info={this.state.info} match={routerProps.match} />
+              <CardDetails info={this.state.info} evo={this.state.evolution} match={routerProps.match} />
             )}
-          /> */}
+          />
         </Switch>
       </div>
     );
