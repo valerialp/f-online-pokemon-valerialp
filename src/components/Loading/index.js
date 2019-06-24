@@ -1,10 +1,10 @@
 import React from 'react';
 import "./styles.scss";
-import POKEBALL from "../../images/POKEBALL.png"
+import pokeball from "../../images/pokeball.svg"
 
 const Loading = () => {
     return(
-        <img src={POKEBALL} className="loading"/>
+        <img src={pokeball} className="loading" alt="loading symbol"/>
     )
 }
 

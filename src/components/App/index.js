@@ -52,7 +52,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="background"></div>
+        <div className="background" />
         {/* <div className="black-left" />
         <div className="black-right" />
         <div className="red-left" />
@@ -77,10 +77,35 @@ class App extends React.Component {
           <Route
             path="/pokemon/:id"
             render={routerProps => (
-              <CardDetails info={this.state.info} evo={this.state.evolution} match={routerProps.match} />
+              <CardDetails
+                info={this.state.info}
+                evo={this.state.evolution}
+                match={routerProps.match}
+              />
             )}
           />
         </Switch>
+        <div className="licence-icons">
+          Icons made by{" "}
+          <a
+            href="https://www.flaticon.es/autores/nikita-golubev"
+            title="Nikita Golubev"
+          >
+            Nikita Golubev
+          </a>{" "}
+          from{" "}
+          <a href="https://www.flaticon.es/" title="Flaticon">
+            www.flaticon.com
+          </a>{" "}
+          is licensed by{" "}
+          <a
+            href="http://creativecommons.org/licenses/by/3.0/"
+            title="Creative Commons BY 3.0"
+            target="_blank"
+          >
+            CC 3.0 BY
+          </a>
+        </div>
       </div>
     );
   }

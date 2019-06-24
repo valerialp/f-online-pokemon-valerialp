@@ -10,44 +10,8 @@
   height: 100vh;
   width: 100vw;
 }
-.black-left{
-  width: 0;
-  height: 0;
-  border-right: 30px solid transparent;
-  border-bottom: 30px solid transparent;
-  border-left: 30px solid $colorBlack;
-  border-top: 30px solid $colorBlack;
+.licence-icons{
   position: fixed;
-  top:0 ;
-  left: 0;
-}
-.black-right{
-  width: 0;
-  height: 0;
-  border-left: 30px solid transparent;
-  border-bottom: 30px solid transparent;
-  border-right: 30px solid $colorBlack;
-  border-top: 30px solid $colorBlack;
-  position: fixed;
-  top:0 ;
-  right: 0;
-}
-
-.red-left{
-  height: 80px;
-  width: 80px;
-  background-color: $colorRed;
-  border-top-right-radius: 100%;
-  position: fixed;
-  bottom:0 ;
-  left: 0;
-}
-.red-right{
-  height: 80px;
-  width: 80px;
-  background-color: $colorRed;
-  border-top-left-radius: 100%;
-  position: fixed;
-  bottom:0 ;
-  right: 0;
+  bottom: 0;
+  z-index: -1;
 }

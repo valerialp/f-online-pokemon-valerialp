@@ -1,0 +1,123 @@
+@import "../../stylesheets/variables.scss";
+
+.card-details__container {
+  display: grid;
+  grid-template-columns: 320px;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  text-align: -webkit-center;
+  background-color: rgba(148, 148, 148, 0.705);
+  border: 4px double white;
+
+  @media all and (min-width:768px){
+    margin: auto;
+    width: 500px;
+    grid-template-columns: 250px 250px;
+    grid-template-rows: 1fr 0.5fr 1fr;
+  }
+}
+// .card-details__abilities--evolution{
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-around;
+// }
+.card-details__info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100px;
+  margin: 10px;
+}
+.hp-stat{
+  margin: 0 0 3px 0;
+  text-align: left;
+}
+.hp-pkemon{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: flex-start;
+}
+.image-details{
+  margin-bottom: 5px;
+  border: 2px solid grey;
+  background-color: rgb(202, 202, 202);
+  border-radius: 15%;
+  box-shadow: inset 2px 2px 7px 1px grey;
+}
+.info-icon {
+  display: block;
+  height: 12px;
+  width: 12px;
+}
+.info-name {
+  margin: 0 0 0 4px;
+  font-weight: 500;
+}
+// .stats__container{
+//   position: relative;
+//       width: 54px;
+//       box-sizing: content-box;
+//       border-width: 50px 18px 0;
+//       border-style: solid;
+//       border-color: red transparent;
+//     }
+//     .stats__container:before {
+//       content: "";
+//       position: absolute;
+//       height: 0;
+//       width: 0;
+//       top: -85px;
+//       left: -18px;
+//       border-width: 0 45px 35px;
+//       border-style: solid;
+//       border-color: transparent transparent red;
+//     }
+.title {
+  background-color: $colorGrey200;
+  color: $colorBronw100;
+  padding: 3px;
+}
+.characteristics {
+  width: 100px;
+}
+.abilities{
+    width: 100px;
+}
+.evolution {
+  width:320px;
+  @media all and(min-width:768px){
+    width: 500px;
+  }
+}
+.type{
+  color:white;
+  margin: 12px 3px;
+  padding: 2px;
+  text-shadow: 1px 1px black;
+  border: 1px double white;
+  border-radius: 15%;
+}
+.bug{
+  background:rgb(0, 87, 0);
+}
+.poison{
+  background: rgb(82, 0, 82);
+}
+.grass{
+  background: rgb(0, 233, 0);
+}
+.fire{
+  background: red;
+}
+.flying{
+  background: rgb(84, 84, 224);
+}
+.water{
+  background: rgb(0, 132, 255);
+}
+.electric{
+  background: yellow;
+}
+.normal{
+  background: rgb(185, 185, 185);
+}
