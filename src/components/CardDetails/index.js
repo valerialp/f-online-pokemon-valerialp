@@ -1,22 +1,62 @@
 import React, { Fragment } from "react";
+import { Chart } from "react-google-charts";
 import Loading from "../Loading";
+import getEvolutionChain from "../../services/getEvolutionChain";
 import pokeball from "../../images/pokeball.svg";
 import "./styles.scss";
 
 class CardDetails extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      evolutions: []
+    };
+    const pokemon = this.props.pokemons.find(
+      item => item.id === parseInt(this.props.match.params.id)
+    );
+  }
+
+  componentDidUpdate() {
+    this.fetchEvolutions();
+  }
+  fetchEvolutions() {
+    const evolution = this.props.evo.find(
+      item => item.id === parseInt(this.props.match.params.id)
+    );
+    evolution
+      ? getEvolutionChain(evolution.evolution_chain.url).then(data => {
+          const evo1 = data.chain.species.name;
+          const evo2 = data.chain.evolves_to[0].species.name;
+          const evo3 = data.chain.evolves_to[0].evolves_to[0].species.name;
+          this.setState({ evolutions: [evo1, evo2, evo3] });
+        })
+      : console.log("loading data");
+  }
+
+  transformDataToPieHole(pokemon) {
+    let stats = [["pokemon", "habilidades"]];
+    for (let i = 0; i < pokemon.stats.length - 1; i++) {
+      const stat = [pokemon.stats[i].stat.name, pokemon.stats[i].base_stat];
+      stats.push(stat);
+    }
+    return stats;
+  }
+
   render() {
-    const pokemon = this.props.info.find(
+    const pokemon = this.props.pokemons.find(
       item => item.id === parseInt(this.props.match.params.id)
     );
     const evolution = this.props.evo.find(
       item => item.id === parseInt(this.props.match.params.id)
     );
-    const imageEvolution = this.props.info.find(item =>
-      evolution.evolves_from_species.name
-        ? item.name === evolution.evolves_from_species.name
-        : null
-    );
-    const image = imageEvolution.sprites.front_default;
+    const imageEvolution = evolution
+      ? this.props.pokemons.find(item =>
+          evolution.evolves_from_species
+            ? item.name === evolution.evolves_from_species.name
+            : null
+        )
+      : null;
+    const image = imageEvolution ? imageEvolution.sprites.front_default : null;
     return (
       <Fragment>
         {pokemon && evolution ? (
@@ -46,15 +86,61 @@ class CardDetails extends React.Component {
               </div>
             </div>
             <div className="card-details__stats">
-              <div className="stats__container">
-                <div className="triangle1" />
-                <div className="triangle2" />
-                <div className="triangle3" />
-                <div className="triangle4" />
-                <div className="triangle5" />
-              </div>
+              <Chart
+                chartType="PieChart"
+                width="250px"
+                height="200px"
+                background="transparent"
+                data={this.transformDataToPieHole(pokemon)}
+                options={{
+                  slices: [
+                    {
+                      color: "#6b6bff"
+                    },
+                    {
+                      color: "#1e1eff"
+                    },
+                    {
+                      color: "#c20303"
+                    },
+                    {
+                      color: "#ff2c2c"
+                    },
+                    {
+                      color: "#EE8268"
+                    }
+                  ],
+                  chartArea: {
+                    top: "40",
+                    left: "10",
+                    width: "90%",
+                    height: "80%",
+                    stroke: "#1C1C1C"
+                  },
+                  backgroundColor: "transparent",
+                  pieSliceBorderColor: "#856D56",
+                  pieSliceTextStyle: {
+                    color: "#1C1C1C",
+                    bold: true
+                  },
+                  legend: {
+                    position: "rigth",
+                    alignment: "start",
+                    textStyle: {
+                      color: "#fff",
+                      fontSize: 10
+                    }
+                  },
+                  title: "Habilidades",
+                  pieHole: 0.4,
+                  is3D: false,
+                  titleTextStyle: {
+                    color: "#856D56",
+                    fontSize: 20
+                  }
+                }}
+              />
             </div>
-            {/* <div className="card-details__abilities--evolution"> */}
             <section className="card-details__characteristics">
               <h3 className="title characteristics">Características</h3>
               <p>Altura: {pokemon.height}</p>
@@ -66,12 +152,18 @@ class CardDetails extends React.Component {
                 <p>{item.ability.name}</p>
               ))}
             </section>
-            {/* </div> */}
             <section className="card-details__evolution">
               <h3 className="title evolution">Evoluciones</h3>
-              <img src={image} alt={imageEvolution.name} />
-              {image ? <i class="fas fa-arrow-right"></i> : null}
-              <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+              {image ? (
+                <Fragment>
+                  <img src={image} alt={pokemon.name} />
+                  <i class="fas fa-arrow-right" />
+                </Fragment>
+              ) : null}
+              <img
+                src={pokemon.sprites.front_default}
+                alt={imageEvolution ? imageEvolution.name : null}
+              />
             </section>
           </div>
         ) : (

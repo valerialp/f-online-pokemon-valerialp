@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 
 class Results extends React.Component {
   render() {
-    const { info, pokemon, evolution} = this.props;
+    const { pokemons, byName, evolution} = this.props;
     return (
       <ul className="list">
-        {info.length ? (
-          info
-            .filter(item => (pokemon ? item.name.includes(pokemon) : true))
+        {pokemons.length ? (
+          pokemons
+            .filter(item => (byName ? item.name.includes(byName) : true))
             .map(item => {
               const name = item.name;
               const evo = evolution.find(item => item.name === name);

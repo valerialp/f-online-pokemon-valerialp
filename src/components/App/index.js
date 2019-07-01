@@ -12,9 +12,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      info: [],
+      pokemons: [],
       evolution: [],
-      pokemon: ""
+      byName: ""
     };
 
     this.handleChangeInputSearch = this.handleChangeInputSearch.bind(this);
@@ -29,7 +29,7 @@ class App extends React.Component {
       const pokemonData = data.results.map(item => getDetail(item.url));
       Promise.all(pokemonData).then(responses => {
         this.setState({
-          info: responses
+          pokemons: responses
         });
         const evolution = responses.map(item => getEvolution(item.id));
 
@@ -45,7 +45,7 @@ class App extends React.Component {
   handleChangeInputSearch(e) {
     const { value } = e.target;
     this.setState({
-      pokemon: value
+      byName: value
     });
   }
 
@@ -53,13 +53,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="background" />
-        {/* <div className="black-left" />
-        <div className="black-right" />
-        <div className="red-left" />
-        <div className="red-right" /> */}
-
         <Filters
-          pokemon={this.state.pokemon}
+          byName={this.state.byName}
           onChangeInput={this.handleChangeInputSearch}
         />
         <Switch>
@@ -68,8 +63,8 @@ class App extends React.Component {
             path="/"
             render={routerProps => (
               <Results
-                pokemon={this.state.pokemon}
-                info={this.state.info}
+                byName={this.state.byName}
+                pokemons={this.state.pokemons}
                 evolution={this.state.evolution}
               />
             )}
@@ -78,7 +73,7 @@ class App extends React.Component {
             path="/pokemon/:id"
             render={routerProps => (
               <CardDetails
-                info={this.state.info}
+                pokemons={this.state.pokemons}
                 evo={this.state.evolution}
                 match={routerProps.match}
               />
